@@ -2,9 +2,12 @@ import { Check, Minus, MoveRight, Brain, Bot, Mail, BookOpen, Zap, Layers } from
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { FeatureDrawer, FeatureInfo } from "@/components/feature-drawer";
+import { features } from "@/data/features";
 
 export const CustomPricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
+  const [selectedFeature, setSelectedFeature] = useState<FeatureInfo | null>(null);
 
   const plans = {
     personal: {
@@ -21,6 +24,13 @@ export const CustomPricing = () => {
       monthly: 299,
       annual: 2999,
       savings: Math.round((299 * 12 - 2999) / (299 * 12) * 100)
+    }
+  };
+
+  const handleFeatureClick = (featureKey: string) => {
+    const feature = features[featureKey];
+    if (feature) {
+      setSelectedFeature(feature);
     }
   };
 
@@ -79,7 +89,7 @@ export const CustomPricing = () => {
                 )}
               </p>
               <Button variant="outline" className="gap-4 mt-8">
-                Get Started <MoveRight className="w-4 h-4" />
+                Enroll <MoveRight className="w-4 h-4" />
               </Button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
@@ -97,7 +107,7 @@ export const CustomPricing = () => {
                 )}
               </p>
               <Button variant="outline" className="gap-4 mt-8 border-accent text-accent hover:bg-accent hover:text-white">
-                Get Started <MoveRight className="w-4 h-4" />
+                Enroll <MoveRight className="w-4 h-4" />
               </Button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-gradient-to-r from-accent/5 to-accent/10 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
@@ -115,7 +125,7 @@ export const CustomPricing = () => {
                 )}
               </p>
               <Button className="gap-4 mt-8 bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-accent/40">
-                Get Started <MoveRight className="w-4 h-4" />
+                Enroll <MoveRight className="w-4 h-4" />
               </Button>
             </div>
 
@@ -131,7 +141,12 @@ export const CustomPricing = () => {
             
             {/* Weekly Group Accelerator */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Weekly Group Accelerator</span>
+              <button 
+                onClick={() => handleFeatureClick("Weekly Group Accelerator")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Weekly Group Accelerator
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -141,7 +156,12 @@ export const CustomPricing = () => {
 
             {/* Private Coaching - Annual Only */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">3 Months Private Coaching with Kenrick Cleveland</span>
+              <button 
+                onClick={() => handleFeatureClick("3 Months Private Coaching")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                3 Months Private Coaching with Kenrick Cleveland
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -161,7 +181,12 @@ export const CustomPricing = () => {
             
             {/* Inner Influence Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Inner Influence Tech</span>
+              <button 
+                onClick={() => handleFeatureClick("Inner Influence Tech")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Inner Influence Tech
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
@@ -175,7 +200,12 @@ export const CustomPricing = () => {
 
             {/* Strategic Influence Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Strategic Influence Tech</span>
+              <button 
+                onClick={() => handleFeatureClick("Strategic Influence Tech")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Strategic Influence Tech
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -187,7 +217,12 @@ export const CustomPricing = () => {
 
             {/* Deep Integration Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Deep Integration Tech</span>
+              <button 
+                onClick={() => handleFeatureClick("Deep Integration Tech")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Deep Integration Tech
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -214,7 +249,12 @@ export const CustomPricing = () => {
             
             {/* Content Collections */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Reality Creation Pro</span>
+              <button 
+                onClick={() => handleFeatureClick("Reality Creation Pro")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Reality Creation Pro
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
@@ -227,7 +267,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Inner Influence Classics</span>
+              <button 
+                onClick={() => handleFeatureClick("Inner Influence Classics")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Inner Influence Classics
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
@@ -241,7 +286,12 @@ export const CustomPricing = () => {
 
             {/* Update Conquering Confidence with pill */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Conquering Confidence</span>
+              <button 
+                onClick={() => handleFeatureClick("Conquering Confidence")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Conquering Confidence
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
@@ -255,7 +305,12 @@ export const CustomPricing = () => {
 
             {/* Update Renegade Persuaders with pill */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Renegade Persuaders</span>
+              <button 
+                onClick={() => handleFeatureClick("Renegade Persuaders")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Renegade Persuaders
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -266,7 +321,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">MaxPersuasion Classics</span>
+              <button 
+                onClick={() => handleFeatureClick("MaxPersuasion Classics")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                MaxPersuasion Classics
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -277,7 +337,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">DreamState Selling System</span>
+              <button 
+                onClick={() => handleFeatureClick("DreamState Selling System")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                DreamState Selling System
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -286,7 +351,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Power Patterns</span>
+              <button 
+                onClick={() => handleFeatureClick("Power Patterns")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Power Patterns
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -295,7 +365,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">FRAMEworks</span>
+              <button 
+                onClick={() => handleFeatureClick("FRAMEworks")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                FRAMEworks
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -304,7 +379,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">NLP Business Practitioner Certification</span>
+              <button 
+                onClick={() => handleFeatureClick("NLP Business Practitioner Certification")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                NLP Business Practitioner Certification
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -313,7 +393,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">NLP Business Master Practitioner Certification</span>
+              <button 
+                onClick={() => handleFeatureClick("NLP Business Master Practitioner Certification")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                NLP Business Master Practitioner Certification
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -347,7 +432,12 @@ export const CustomPricing = () => {
             
             {/* AI Collections */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Personal Mastery AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Personal Mastery AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Personal Mastery AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
@@ -360,7 +450,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Hypnosis AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Hypnosis AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Hypnosis AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
@@ -373,7 +468,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Ads AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Ads AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Ads AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -384,7 +484,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Emails AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Emails AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Emails AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -395,7 +500,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Social Posts AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Social Posts AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Social Posts AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -406,7 +516,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Short-Form Video Scripts AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Short-Form Video Scripts AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Short-Form Video Scripts AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -417,7 +532,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Strategic Insight AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Strategic Insight AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Strategic Insight AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -428,7 +548,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Storytelling AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Storytelling AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Storytelling AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
@@ -439,7 +564,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">DreamState Selling AI</span>
+              <button 
+                onClick={() => handleFeatureClick("DreamState Selling AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                DreamState Selling AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -448,7 +578,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Language Mastery AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Language Mastery AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Language Mastery AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -457,7 +592,12 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-lg text-foreground">Framing Mastery AI</span>
+              <button 
+                onClick={() => handleFeatureClick("Framing Mastery AI")}
+                className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
+              >
+                Framing Mastery AI
+              </button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
@@ -467,6 +607,15 @@ export const CustomPricing = () => {
           </div>
         </div>
       </div>
+
+      {/* Add the FeatureDrawer at the end */}
+      {selectedFeature && (
+        <FeatureDrawer
+          isOpen={!!selectedFeature}
+          onClose={() => setSelectedFeature(null)}
+          feature={selectedFeature}
+        />
+      )}
     </div>
   );
 }; 
