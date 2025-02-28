@@ -2,13 +2,24 @@ import { useEffect, useMemo, useState } from "react";
 
 import { motion } from "framer-motion";
 
-import { MoveRight, PhoneCall } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Hero5 = () => {
   const [titleNumber, setTitleNumber] = useState(0);
   const titles = useMemo(
-    () => ["self", "future", "dream", "innovator", "persuader", "salesperson", "communicator", "you"],
+    () => [
+      "'Influence Insiders' Newsletter.",
+      "Neuro-Imprinting Sessions.",
+      "50 AI Credits per month.",
+      "lessons.",
+      "insights.",
+      "tips.",
+      "strategies.",
+      "news.",
+      "frameworks.",
+      "skills."
+    ],
     []
   );
 
@@ -34,13 +45,13 @@ export const Hero5 = () => {
           </div>
           <div className="flex gap-4 flex-col">
             <h2 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
-              <span className="text-spektr-cyan-50">Be your best</span>
-              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
+              <span className="text-spektr-cyan-50">Creating a free account gives you</span>
+              <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-16 md:pt-4 min-h-[200px]">
                 &nbsp;
                 {titles.map((title, index) => (
                   <motion.span
                     key={index}
-                    className="absolute font-semibold"
+                    className="absolute font-semibold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent py-2"
                     initial={{ opacity: 0, y: "-100" }}
                     transition={{ type: "spring", stiffness: 50 }}
                     animate={
@@ -60,20 +71,10 @@ export const Hero5 = () => {
                 ))}
               </span>
             </h2>
-
-            <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
-              Managing a small business today is already tough. Avoid further
-              complications by ditching outdated, tedious trade methods. Our
-              goal is to streamline SMB trade, making it easier and faster than
-              ever.
-            </p>
           </div>
           <div className="flex flex-row gap-3">
-            <Button size="lg" className="gap-4" variant="outline">
-              Jump on a call <PhoneCall className="w-4 h-4" />
-            </Button>
-            <Button size="lg" className="gap-4">
-              Sign up here <MoveRight className="w-4 h-4" />
+            <Button size="lg" className="gap-4 text-2xl px-8 py-8">
+              Sign up here <MoveRight className="w-6 h-6" />
             </Button>
           </div>
         </div>

@@ -1,13 +1,37 @@
 import { Check, Minus, MoveRight, Brain, Bot, Mail, BookOpen, Zap, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FeatureDrawer, FeatureInfo } from "@/components/feature-drawer";
 import { features } from "@/data/features";
+import { motion } from "framer-motion";
 
 export const CustomPricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
   const [selectedFeature, setSelectedFeature] = useState<FeatureInfo | null>(null);
+  const [titleNumber, setTitleNumber] = useState(0);
+
+  const titles = [
+    "rich inner resources.",
+    "emotional state management.",
+    "timeless influence principles.",
+    "breakthroughs in modern persuasion.",
+    "clear connection frameworks.",
+    "pure strategic advantage.",
+    "possibilities others can't see.",
+    "the Keys to Yes."
+  ];
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === titles.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, titles]);
 
   const plans = {
     personal: {
@@ -112,14 +136,43 @@ export const CustomPricing = () => {
   };
 
   return (
-    <div className="w-full py-20 lg:py-40">
+    <div className="w-full py-8 lg:py-20">
       <div className="container mx-auto">
-        <div className="flex text-center justify-center items-center gap-6 flex-col">
-          <Badge className="text-lg px-4 py-1">Pricing</Badge>
-          <div className="flex gap-2 flex-col pb-8">
-            <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular text-foreground">
-              Choose Your Mastery Level
+        <div className="flex text-center justify-center items-center gap-2 flex-col">
+          <Badge className="text-2xl px-6 py-2">For the Serious: Invest In Your Success</Badge>
+          <div className="flex gap-2 flex-col pt-6">
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter max-w-[800px] text-center bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
+              Commit to Excellence
             </h2>
+            <div className="flex flex-col items-center justify-center w-full max-w-4xl mx-auto pt-4">
+              <h3 className="text-2xl md:text-4xl tracking-tighter text-center font-regular">
+                <span className="text-spektr-cyan-50">Inside the Mastery Levels, you wield</span>
+                <span className="relative flex w-full justify-center overflow-hidden text-center md:pt-2 min-h-[120px]">
+                  &nbsp;
+                  {titles.map((title, index) => (
+                    <motion.span
+                      key={index}
+                      className="absolute font-semibold bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent py-1"
+                      initial={{ opacity: 0, y: "-100" }}
+                      transition={{ type: "spring", stiffness: 50 }}
+                      animate={
+                        titleNumber === index
+                          ? {
+                              y: 0,
+                              opacity: 1,
+                            }
+                          : {
+                              y: titleNumber > index ? -100 : 50,
+                              opacity: 0,
+                            }
+                      }
+                    >
+                      {title}
+                    </motion.span>
+                  ))}
+                </span>
+              </h3>
+            </div>
           </div>
 
           <div className="grid text-left w-full grid-cols-3 lg:grid-cols-4 divide-x border border-border rounded-lg">
