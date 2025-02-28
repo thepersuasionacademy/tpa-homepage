@@ -26,14 +26,14 @@ export const Hero5 = () => {
   return (
     <div className="w-full">
       <div className="container mx-auto">
-        <div className="flex gap-8 py-20 lg:py-40 items-center justify-center flex-col">
+        <div className="flex gap-8 pt-4 pb-20 lg:pb-40 items-center justify-center flex-col">
           <div>
             <Button variant="secondary" size="sm" className="gap-4">
               Read our launch article <MoveRight className="w-4 h-4" />
             </Button>
           </div>
           <div className="flex gap-4 flex-col">
-            <h1 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
+            <h2 className="text-5xl md:text-7xl max-w-2xl tracking-tighter text-center font-regular">
               <span className="text-spektr-cyan-50">Be your best</span>
               <span className="relative flex w-full justify-center overflow-hidden text-center md:pb-4 md:pt-1">
                 &nbsp;
@@ -59,7 +59,7 @@ export const Hero5 = () => {
                   </motion.span>
                 ))}
               </span>
-            </h1>
+            </h2>
 
             <p className="text-lg md:text-xl leading-relaxed tracking-tight text-muted-foreground max-w-2xl text-center">
               Managing a small business today is already tough. Avoid further

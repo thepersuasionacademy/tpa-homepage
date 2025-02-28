@@ -13,6 +13,7 @@ import { Menu, MoveRight, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 
 export const Header1 = () => {
   const navigationItems = [
@@ -75,7 +76,7 @@ export const Header1 = () => {
   };
   
   return (
-    <header className="w-full z-40 sticky top-0 left-0 bg-background">
+    <header className="w-full z-40 sticky top-0 left-0 backdrop-blur-md bg-background/60 border-b border-accent/20 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
       <div className="container relative mx-auto min-h-20 flex gap-4 flex-row lg:grid lg:grid-cols-3 items-center">
         <div className="justify-start items-center gap-4 lg:flex hidden flex-row">
           <NavigationMenu className="flex justify-start items-start">
@@ -127,8 +128,26 @@ export const Header1 = () => {
             </NavigationMenuList>
           </NavigationMenu>
         </div>
-        <div className="flex lg:justify-center">
-          <p className="font-semibold">TWBlocks</p>
+        <div className="flex lg:justify-center items-center">
+          <div className="flex flex-col items-center">
+            <div className="h-12 w-36 relative">
+              {theme === "dark" ? (
+                <Image 
+                  src="https://thepersuasionacademycdn.b-cdn.net/Images/TPA%20The%20Power%20Ark%20Logo%20New.png" 
+                  alt="The Persuasion Academy Logo" 
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              ) : (
+                <Image 
+                  src="https://thepersuasionacademycdn.b-cdn.net/Images/The%20TPA%20Logo%20New%20Black.png" 
+                  alt="The Persuasion Academy Logo" 
+                  fill
+                  style={{ objectFit: 'contain' }}
+                />
+              )}
+            </div>
+          </div>
         </div>
         <div className="flex justify-end w-full gap-4 items-center">
           <div className="hidden md:flex items-center justify-center">
@@ -154,8 +173,25 @@ export const Header1 = () => {
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
           {isOpen && (
-            <div className="absolute top-20 border-t flex flex-col w-full right-0 bg-background shadow-lg py-4 container gap-8">
-              <div className="flex justify-center items-center border-b pb-4">
+            <div className="absolute top-20 border-t border-accent/20 flex flex-col w-full right-0 bg-background/70 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.1)] py-4 container gap-8">
+              <div className="flex flex-col items-center justify-center border-b pb-4">
+                <div className="h-12 w-36 relative mb-2">
+                  {theme === "dark" ? (
+                    <Image 
+                      src="https://thepersuasionacademycdn.b-cdn.net/Images/TPA%20The%20Power%20Ark%20Logo%20New.png" 
+                      alt="The Persuasion Academy Logo" 
+                      fill
+                      style={{ objectFit: 'contain' }}
+                    />
+                  ) : (
+                    <Image 
+                      src="https://thepersuasionacademycdn.b-cdn.net/Images/The%20TPA%20Logo%20New%20Black.png" 
+                      alt="The Persuasion Academy Logo" 
+                      fill
+                      style={{ objectFit: 'contain' }}
+                    />
+                  )}
+                </div>
                 <Button 
                   variant="ghost"
                   size="icon"
