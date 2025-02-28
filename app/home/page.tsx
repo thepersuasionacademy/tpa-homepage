@@ -1,10 +1,10 @@
 "use client";
 
 import { Header1 } from "@/blocks/header/header1";
-import { TopHeader } from "@/blocks/header/top-header";
 import { Hero5 } from "@/blocks/hero/hero5";
-import { CustomPricing } from "@/blocks/pricing/custom-pricing";
 import { LightingBackground } from "@/blocks/background/lighting-background";
+import { ResponsivePricing } from "@/blocks/pricing/responsive-pricing";
+import { Feature4 } from "@/blocks/features/feature4";
 
 export default function HomePage() {
   return (
@@ -12,9 +12,9 @@ export default function HomePage() {
       <LightingBackground />
       <Header1 />
       <main>
-        <TopHeader />
+        <Feature4 />
         <Hero5 />
-        <CustomPricing />
+        <ResponsivePricing />
       </main>
     </>
   );

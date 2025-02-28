@@ -34,22 +34,96 @@ export const CustomPricing = () => {
     }
   };
 
+  // Add feature categories and feature availability logic
+  const featureCategories = {
+    coaching: ["Weekly Group Accelerator", "3 Months Private Coaching"],
+    neuroTech: ["Inner Influence Tech", "Strategic Influence Tech", "Deep Integration Tech"],
+    content: [
+      "Reality Creation Pro", 
+      "Inner Influence Classics", 
+      "Conquering Confidence", 
+      "Renegade Persuaders", 
+      "MaxPersuasion Classics", 
+      "DreamState Selling System", 
+      "Power Patterns", 
+      "FRAMEworks", 
+      "NLP Business Practitioner Certification", 
+      "NLP Business Master Practitioner Certification"
+    ],
+    aiEngine: [
+      "Personal Mastery AI",
+      "Hypnosis AI",
+      "Ads AI",
+      "Emails AI",
+      "Social Posts AI",
+      "Short-Form Video Scripts AI",
+      "Strategic Insight AI",
+      "Storytelling AI",
+      "DreamState Selling AI",
+      "Language Mastery AI",
+      "Framing Mastery AI"
+    ]
+  };
+
+  const renderFeatureAvailability = (plan: 'personal' | 'strategic' | 'sales', featureKey: string) => {
+    const featureAvailability = {
+      personal: [
+        "Inner Influence Tech", "Reality Creation Pro", "Inner Influence Classics", 
+        "Personal Mastery AI", "Hypnosis AI"
+      ],
+      strategic: [
+        "Inner Influence Tech", "Strategic Influence Tech", "Reality Creation Pro", 
+        "Inner Influence Classics", "MaxPersuasion Classics", "Personal Mastery AI", 
+        "Hypnosis AI", "Ads AI", "Emails AI", "Social Posts AI", "Short-Form Video Scripts AI", 
+        "Strategic Insight AI", "Storytelling AI"
+      ],
+      sales: [
+        "Weekly Group Accelerator", "Inner Influence Tech", "Strategic Influence Tech", 
+        "Deep Integration Tech", "Reality Creation Pro", "Inner Influence Classics", 
+        "MaxPersuasion Classics", "DreamState Selling System", "Power Patterns", 
+        "FRAMEworks", "NLP Business Practitioner Certification", 
+        "NLP Business Master Practitioner Certification", "Personal Mastery AI", 
+        "Hypnosis AI", "Ads AI", "Emails AI", 
+        "Short-Form Video Scripts AI", "Strategic Insight AI", "Storytelling AI", 
+        "DreamState Selling AI", "Language Mastery AI", "Framing Mastery AI"
+      ]
+    };
+
+    const annualOnlyFeatures = [
+      "3 Months Private Coaching", "Conquering Confidence", "Renegade Persuaders"
+    ];
+
+    if (annualOnlyFeatures.includes(featureKey)) {
+      if (featureKey === "Conquering Confidence") {
+        return <Badge variant="outline" className={`${isAnnual ? "bg-accent/10 text-accent" : "bg-muted/50 text-muted-foreground"} border-0 text-sm whitespace-nowrap`}>Annual Only</Badge>;
+      }
+      if (featureKey === "Renegade Persuaders" && plan !== "personal") {
+        return <Badge variant="outline" className={`${isAnnual ? "bg-accent/10 text-accent" : "bg-muted/50 text-muted-foreground"} border-0 text-sm whitespace-nowrap`}>Annual Only</Badge>;
+      }
+      if (featureKey === "3 Months Private Coaching" && plan === "sales") {
+        return <Badge variant="outline" className={`${isAnnual ? "bg-accent/10 text-accent" : "bg-muted/50 text-muted-foreground"} border-0 text-sm whitespace-nowrap`}>Annual Only</Badge>;
+      }
+      return null;
+    }
+
+    return featureAvailability[plan].includes(featureKey) ? (
+      <Check className="w-4 h-4 text-accent stroke-[3]" />
+    ) : null;
+  };
+
   return (
     <div className="w-full py-20 lg:py-40">
       <div className="container mx-auto">
-        <div className="flex text-center justify-center items-center gap-4 flex-col">
-          <Badge>Pricing</Badge>
-          <div className="flex gap-2 flex-col">
+        <div className="flex text-center justify-center items-center gap-6 flex-col">
+          <Badge className="text-lg px-4 py-1">Pricing</Badge>
+          <div className="flex gap-2 flex-col pb-8">
             <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular text-foreground">
-              Choose Your Persuasion Path
+              Choose Your Mastery Level
             </h2>
-            <p className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl text-center">
-              Unlock your persuasion potential with our powerful solution packages
-            </p>
           </div>
 
-          <div className="grid text-left w-full grid-cols-3 lg:grid-cols-4 divide-x pt-20">
-            <div className="col-span-3 lg:col-span-1 sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex items-center justify-center">
+          <div className="grid text-left w-full grid-cols-3 lg:grid-cols-4 divide-x border border-border rounded-lg">
+            <div className="col-span-3 lg:col-span-1 sticky top-[80px] bg-background flex items-center justify-center border-r border-border">
               {/* Billing Pills */}
               <div className="flex flex-col gap-2 px-3 lg:px-6 py-4">
                 <button
@@ -72,65 +146,68 @@ export const CustomPricing = () => {
                 >
                   Annual
                 </button>
+                <p className="text-base text-muted-foreground text-left mt-2">
+                  <b>NOTE:</b> Click on any item below for more details
+                </p>
               </div>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-              <div className="-mx-6 -mt-4 pt-4 px-6">
+            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] bg-background border-b border-border">
+              <div className="border-t-2 border-accent/20 -mx-6 -mt-4 pt-4 px-6">
                 <div className="text-xs font-medium text-accent/80 mb-2">Most Affordable</div>
                 <p className="text-2xl text-foreground">Personal Mastery</p>
               </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.personal.annual : plans.personal.monthly}</span>
-                <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
+                <span className="text-sm text-muted-foreground">per {isAnnual ? 'year' : 'month'}</span>
                 {isAnnual && (
                   <Badge className="bg-accent/10 text-accent border-0">
                     Save {plans.personal.savings}%
                   </Badge>
                 )}
               </p>
-              <Button variant="outline" className="gap-4 mt-8">
+              <Button variant="outline" className="gap-4 mt-8 border-[0.25px] border-black dark:border-white text-xl">
                 Enroll <MoveRight className="w-4 h-4" />
               </Button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] bg-background border-b border-r border-border">
               <div className="border-t-2 border-accent/20 -mx-6 -mt-4 pt-4 px-6">
                 <div className="text-xs font-medium text-accent mb-2">Most Popular</div>
                 <p className="text-2xl text-foreground">Strategic Mastery</p>
               </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.strategic.annual : plans.strategic.monthly}</span>
-                <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
+                <span className="text-sm text-muted-foreground">per {isAnnual ? 'year' : 'month'}</span>
                 {isAnnual && (
                   <Badge className="bg-accent/10 text-accent border-0">
                     Save {plans.strategic.savings}%
                   </Badge>
                 )}
               </p>
-              <Button variant="outline" className="gap-4 mt-8 border-accent text-accent hover:bg-accent hover:text-white">
+              <Button className="gap-4 mt-8 dark:bg-white dark:text-black bg-black text-white hover:bg-black/90 dark:hover:bg-white/90 text-xl">
                 Enroll <MoveRight className="w-4 h-4" />
               </Button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-gradient-to-r from-accent/5 to-accent/10 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] bg-background border-b border-r border-border">
               <div className="border-t-2 border-accent -mx-6 -mt-4 pt-4 px-6">
                 <div className="text-xs font-medium text-accent mb-2">Best Value</div>
                 <p className="text-2xl text-foreground">Sales Mastery</p>
               </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.sales.annual : plans.sales.monthly}</span>
-                <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
+                <span className="text-sm text-muted-foreground">per {isAnnual ? 'year' : 'month'}</span>
                 {isAnnual && (
                   <Badge className="bg-accent/10 text-accent border-0">
                     Save {plans.sales.savings}%
                   </Badge>
                 )}
               </p>
-              <Button className="gap-4 mt-8 bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-accent/40">
+              <Button className="gap-4 mt-8 bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-accent/40 text-xl">
                 Enroll <MoveRight className="w-4 h-4" />
               </Button>
             </div>
 
             {/* Coaching Section */}
-            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t border-border">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
                 <b className="text-2xl text-foreground">Coaching</b>
               </div>
@@ -140,7 +217,7 @@ export const CustomPricing = () => {
             </div>
             
             {/* Weekly Group Accelerator */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Weekly Group Accelerator")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -148,14 +225,14 @@ export const CustomPricing = () => {
                 Weekly Group Accelerator
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* Private Coaching - Annual Only */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("3 Months Private Coaching")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -163,14 +240,14 @@ export const CustomPricing = () => {
                 3 Months Private Coaching with Kenrick Cleveland
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center items-center h-full">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center items-center h-full border-t border-border">
               <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg whitespace-nowrap">Annual Only</Badge>
             </div>
 
             {/* Neuro-Imprinting Tech Section */}
-            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t border-border">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
                 <b className="text-2xl text-foreground">Neuro-Imprinting Tech</b>
               </div>
@@ -180,7 +257,7 @@ export const CustomPricing = () => {
             </div>
             
             {/* Inner Influence Tech */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Inner Influence Tech")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -188,18 +265,18 @@ export const CustomPricing = () => {
                 Inner Influence Tech
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* Strategic Influence Tech */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Strategic Influence Tech")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -207,16 +284,16 @@ export const CustomPricing = () => {
                 Strategic Influence Tech
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-2" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-2" />
             </div>
 
             {/* Deep Integration Tech */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Deep Integration Tech")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -224,14 +301,14 @@ export const CustomPricing = () => {
                 Deep Integration Tech
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-2" />
             </div>
 
             {/* Content Section */}
-            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t border-border">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
                 <div className="flex items-center gap-2 whitespace-nowrap">
                   <b className="text-2xl text-foreground">Content</b>
@@ -248,7 +325,7 @@ export const CustomPricing = () => {
             </div>
             
             {/* Content Collections */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Reality Creation Pro")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -256,17 +333,17 @@ export const CustomPricing = () => {
                 Reality Creation Pro
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Inner Influence Classics")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -274,18 +351,18 @@ export const CustomPricing = () => {
                 Inner Influence Classics
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* Update Conquering Confidence with pill */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Conquering Confidence")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -293,18 +370,18 @@ export const CustomPricing = () => {
                 Conquering Confidence
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
 
             {/* Update Renegade Persuaders with pill */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Renegade Persuaders")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -312,15 +389,15 @@ export const CustomPricing = () => {
                 Renegade Persuaders
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("MaxPersuasion Classics")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -328,15 +405,15 @@ export const CustomPricing = () => {
                 MaxPersuasion Classics
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("DreamState Selling System")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -344,13 +421,13 @@ export const CustomPricing = () => {
                 DreamState Selling System
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Power Patterns")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -358,13 +435,13 @@ export const CustomPricing = () => {
                 Power Patterns
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("FRAMEworks")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -372,13 +449,13 @@ export const CustomPricing = () => {
                 FRAMEworks
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("NLP Business Practitioner Certification")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -386,13 +463,13 @@ export const CustomPricing = () => {
                 NLP Business Practitioner Certification
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("NLP Business Master Practitioner Certification")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -400,14 +477,14 @@ export const CustomPricing = () => {
                 NLP Business Master Practitioner Certification
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* AI Engine Section */}
-            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t border-border">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
                 <b className="text-2xl text-foreground">AI Engine</b>
               </div>
@@ -417,21 +494,21 @@ export const CustomPricing = () => {
             </div>
             
             {/* Base AI Credits */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <span className="text-lg text-foreground">Base AI Credits</span>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <p className="text-lg text-muted-foreground font-medium">300</p>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <p className="text-lg text-muted-foreground font-medium">2,000</p>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <p className="text-lg text-muted-foreground font-medium">10,000</p>
             </div>
             
             {/* AI Collections */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Personal Mastery AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -439,17 +516,17 @@ export const CustomPricing = () => {
                 Personal Mastery AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Hypnosis AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -457,17 +534,17 @@ export const CustomPricing = () => {
                 Hypnosis AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Ads AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -475,15 +552,15 @@ export const CustomPricing = () => {
                 Ads AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Emails AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -491,15 +568,15 @@ export const CustomPricing = () => {
                 Emails AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Social Posts AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -507,15 +584,15 @@ export const CustomPricing = () => {
                 Social Posts AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Short-Form Video Scripts AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -523,15 +600,15 @@ export const CustomPricing = () => {
                 Short-Form Video Scripts AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Strategic Insight AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -539,15 +616,15 @@ export const CustomPricing = () => {
                 Strategic Insight AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Storytelling AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -555,15 +632,15 @@ export const CustomPricing = () => {
                 Storytelling AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("DreamState Selling AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -571,13 +648,13 @@ export const CustomPricing = () => {
                 DreamState Selling AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Language Mastery AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -585,13 +662,13 @@ export const CustomPricing = () => {
                 Language Mastery AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t border-r border-border">
               <button 
                 onClick={() => handleFeatureClick("Framing Mastery AI")}
                 className="text-lg text-foreground hover:text-accent transition-colors text-left w-full"
@@ -599,9 +676,9 @@ export const CustomPricing = () => {
                 Framing Mastery AI
               </button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
               <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
           </div>
