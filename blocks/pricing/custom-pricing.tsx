@@ -30,7 +30,7 @@ export const CustomPricing = () => {
         <div className="flex text-center justify-center items-center gap-4 flex-col">
           <Badge>Pricing</Badge>
           <div className="flex gap-2 flex-col">
-            <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular">
+            <h2 className="text-3xl md:text-5xl tracking-tighter max-w-xl text-center font-regular text-foreground">
               Choose Your Persuasion Path
             </h2>
             <p className="text-lg leading-relaxed tracking-tight text-muted-foreground max-w-xl text-center">
@@ -38,92 +38,91 @@ export const CustomPricing = () => {
             </p>
           </div>
 
-          {/* Billing Toggle */}
-          <div className="flex items-center gap-4 mt-8">
-            <span className={!isAnnual ? "font-semibold" : "text-muted-foreground"}>Monthly</span>
-            <button
-              onClick={() => setIsAnnual(!isAnnual)}
-              className={`w-16 h-8 rounded-full p-1 transition-colors duration-200 ease-in-out ${
-                isAnnual ? "bg-accent" : "bg-gray-200"
-              }`}
-            >
-              <div
-                className={`w-6 h-6 rounded-full bg-white transition-transform duration-200 ease-in-out ${
-                  isAnnual ? "translate-x-8" : "translate-x-0"
-                }`}
-              />
-            </button>
-            <span className={isAnnual ? "font-semibold" : "text-muted-foreground"}>Annual</span>
-          </div>
-
           <div className="grid text-left w-full grid-cols-3 lg:grid-cols-4 divide-x pt-20">
-            <div className="col-span-3 lg:col-span-1"></div>
-            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col">
-              <p className="text-2xl">Personal Mastery</p>
-              <p className="text-sm text-muted-foreground">
-                Master the fundamentals of persuasion and influence
-              </p>
-              {isAnnual && (
-                <Badge className="self-start mt-4 bg-accent/10 text-accent border-0">
-                  Save {plans.personal.savings}%
-                </Badge>
-              )}
+            <div className="col-span-3 lg:col-span-1 sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 flex items-center justify-center">
+              {/* Billing Pills */}
+              <div className="flex flex-col gap-2 px-3 lg:px-6 py-4">
+                <button
+                  onClick={() => setIsAnnual(false)}
+                  className={`px-6 py-2 rounded-full transition-all duration-200 ease-in-out ${
+                    !isAnnual 
+                      ? "bg-accent text-white shadow-lg shadow-accent/25" 
+                      : "bg-white border border-accent text-black hover:bg-gray-50"
+                  }`}
+                >
+                  Monthly
+                </button>
+                <button
+                  onClick={() => setIsAnnual(true)}
+                  className={`px-6 py-2 rounded-full transition-all duration-200 ease-in-out ${
+                    isAnnual 
+                      ? "bg-accent text-white shadow-lg shadow-accent/25" 
+                      : "bg-white border border-accent text-black hover:bg-gray-50"
+                  }`}
+                >
+                  Annual
+                </button>
+              </div>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+              <p className="text-2xl text-foreground">Personal Mastery</p>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
-                <span className="text-4xl">${isAnnual ? plans.personal.annual : plans.personal.monthly}</span>
+                <span className="text-4xl text-foreground">${isAnnual ? plans.personal.annual : plans.personal.monthly}</span>
                 <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
+                {isAnnual && (
+                  <Badge className="bg-accent/10 text-accent border-0">
+                    Save {plans.personal.savings}%
+                  </Badge>
+                )}
               </p>
               <Button variant="outline" className="gap-4 mt-8">
                 Get Started <MoveRight className="w-4 h-4" />
               </Button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col">
-              <p className="text-2xl">Strategic Mastery</p>
-              <p className="text-sm text-muted-foreground">
-                Advanced persuasion techniques for professionals
-              </p>
-              {isAnnual && (
-                <Badge className="self-start mt-4 bg-accent/10 text-accent border-0">
-                  Save {plans.strategic.savings}%
-                </Badge>
-              )}
+            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+              <p className="text-2xl text-foreground">Strategic Mastery</p>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
-                <span className="text-4xl">${isAnnual ? plans.strategic.annual : plans.strategic.monthly}</span>
+                <span className="text-4xl text-foreground">${isAnnual ? plans.strategic.annual : plans.strategic.monthly}</span>
                 <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
+                {isAnnual && (
+                  <Badge className="bg-accent/10 text-accent border-0">
+                    Save {plans.strategic.savings}%
+                  </Badge>
+                )}
               </p>
               <Button className="gap-4 mt-8 bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-accent/40">
                 Get Started <MoveRight className="w-4 h-4" />
               </Button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col">
-              <p className="text-2xl">Sales Mastery</p>
-              <p className="text-sm text-muted-foreground">
-                Complete persuasion system for sales professionals
-              </p>
-              {isAnnual && (
-                <Badge className="self-start mt-4 bg-accent/10 text-accent border-0">
-                  Save {plans.sales.savings}%
-                </Badge>
-              )}
+            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+              <p className="text-2xl text-foreground">Sales Mastery</p>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
-                <span className="text-4xl">${isAnnual ? plans.sales.annual : plans.sales.monthly}</span>
+                <span className="text-4xl text-foreground">${isAnnual ? plans.sales.annual : plans.sales.monthly}</span>
                 <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
+                {isAnnual && (
+                  <Badge className="bg-accent/10 text-accent border-0">
+                    Save {plans.sales.savings}%
+                  </Badge>
+                )}
               </p>
               <Button variant="outline" className="gap-4 mt-8">
                 Get Started <MoveRight className="w-4 h-4" />
               </Button>
             </div>
-            
+
             {/* Coaching Section */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t mt-4">
-              <b className="text-lg">Coaching</b>
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+              <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+                <b className="text-lg text-foreground">Coaching</b>
+              </div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
             </div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
             
             {/* Weekly Group Accelerator */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Weekly Group Accelerator</span>
+              <span className="text-foreground">Weekly Group Accelerator</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -136,37 +135,32 @@ export const CustomPricing = () => {
             </div>
 
             {/* Private Coaching - Annual Only */}
-            {isAnnual && (
-              <>
-                <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-                  <div className="flex items-center gap-2">
-                    <span>3 Months Private Coaching with Kenrick Cleveland</span>
-                    <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
-                  </div>
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Minus className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Minus className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Check className="w-4 h-4 text-accent" />
-                </div>
-              </>
-            )}
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+              <span className="text-foreground">3 Months Private Coaching with Kenrick Cleveland</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Minus className="w-4 h-4 text-muted-foreground" />
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Minus className="w-4 h-4 text-muted-foreground" />
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+            </div>
 
             {/* Neuro-Imprinting Tech Section */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t mt-4">
-              <b className="text-lg">Neuro-Imprinting Tech</b>
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+              <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+                <b className="text-lg text-foreground">Neuro-Imprinting Tech</b>
+              </div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
             </div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
             
             {/* Inner Influence Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Inner Influence Tech</span>
+              <span className="text-foreground">Inner Influence Tech</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-4 h-4 text-accent" />
@@ -180,7 +174,7 @@ export const CustomPricing = () => {
 
             {/* Strategic Influence Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Strategic Influence Tech</span>
+              <span className="text-foreground">Strategic Influence Tech</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -194,7 +188,7 @@ export const CustomPricing = () => {
 
             {/* Deep Integration Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Deep Integration Tech</span>
+              <span className="text-foreground">Deep Integration Tech</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -207,16 +201,18 @@ export const CustomPricing = () => {
             </div>
 
             {/* Content Section */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t mt-4">
-              <b className="text-lg">Content</b>
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+              <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+                <b className="text-lg text-foreground">Content</b>
+              </div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
             </div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
             
             {/* Content Collections */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Reality Creation Pro</span>
+              <span className="text-foreground">Reality Creation Pro</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-4 h-4 text-accent" />
@@ -229,7 +225,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Inner Influence Classics</span>
+              <span className="text-foreground">Inner Influence Classics</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-4 h-4 text-accent" />
@@ -242,49 +238,35 @@ export const CustomPricing = () => {
             </div>
 
             {/* Update Conquering Confidence with pill */}
-            {isAnnual && (
-              <>
-                <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-                  <div className="flex items-center gap-2">
-                    <span>Conquering Confidence</span>
-                    <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
-                  </div>
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Check className="w-4 h-4 text-accent" />
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Check className="w-4 h-4 text-accent" />
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Check className="w-4 h-4 text-accent" />
-                </div>
-              </>
-            )}
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+              <span className="text-foreground">Conquering Confidence</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+            </div>
 
             {/* Update Renegade Persuaders with pill */}
-            {isAnnual && (
-              <>
-                <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-                  <div className="flex items-center gap-2">
-                    <span>Renegade Persuaders</span>
-                    <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
-                  </div>
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Minus className="w-4 h-4 text-muted-foreground" />
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Check className="w-4 h-4 text-accent" />
-                </div>
-                <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-                  <Check className="w-4 h-4 text-accent" />
-                </div>
-              </>
-            )}
+            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+              <span className="text-foreground">Renegade Persuaders</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Minus className="w-4 h-4 text-muted-foreground" />
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+            </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>MaxPersuasion Classics</span>
+              <span className="text-foreground">MaxPersuasion Classics</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -297,7 +279,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>DreamState Selling System</span>
+              <span className="text-foreground">DreamState Selling System</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -310,7 +292,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Power Patterns</span>
+              <span className="text-foreground">Power Patterns</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -323,7 +305,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>FRAMEworks</span>
+              <span className="text-foreground">FRAMEworks</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -336,7 +318,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>NLP Business Practitioner Certification</span>
+              <span className="text-foreground">NLP Business Practitioner Certification</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -349,7 +331,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>NLP Business Master Practitioner Certification</span>
+              <span className="text-foreground">NLP Business Master Practitioner Certification</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
@@ -362,30 +344,32 @@ export const CustomPricing = () => {
             </div>
 
             {/* AI Engine Section */}
-            <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4 border-t mt-4">
-              <b className="text-lg">AI Engine</b>
+            <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
+              <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
+                <b className="text-lg text-foreground">AI Engine</b>
+              </div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
+              <div className="py-4"></div>
             </div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
-            <div className="border-t mt-4"></div>
             
             {/* Base AI Credits */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Base AI Credits</span>
+              <span className="text-foreground">Base AI Credits</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <p className="text-muted-foreground text-sm">300</p>
+              <p className="text-muted-foreground text-sm font-medium">300</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <p className="text-muted-foreground text-sm">2,000</p>
+              <p className="text-muted-foreground text-sm font-medium">2,000</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <p className="text-muted-foreground text-sm">10,000</p>
+              <p className="text-muted-foreground text-sm font-medium">10,000</p>
             </div>
             
             {/* AI Collections */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Personal Mastery AI</span>
+              <span className="text-foreground">Personal Mastery AI</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-4 h-4 text-accent" />
@@ -398,7 +382,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Hypnosis AI</span>
+              <span className="text-foreground">Hypnosis AI</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Check className="w-4 h-4 text-accent" />
@@ -411,7 +395,7 @@ export const CustomPricing = () => {
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Ads AI</span>
+              <span className="text-foreground">Ads AI</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
               <Minus className="w-4 h-4 text-muted-foreground" />
