@@ -9,9 +9,10 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Menu, MoveRight, X } from "lucide-react";
+import { Menu, MoveRight, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 export const Header1 = () => {
   const navigationItems = [
@@ -67,6 +68,12 @@ export const Header1 = () => {
   ];
 
   const [isOpen, setOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
+  
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+  
   return (
     <header className="w-full z-40 sticky top-0 left-0 bg-background">
       <div className="container relative mx-auto min-h-20 flex gap-4 flex-row lg:grid lg:grid-cols-3 items-center">
@@ -123,10 +130,21 @@ export const Header1 = () => {
         <div className="flex lg:justify-center">
           <p className="font-semibold">TWBlocks</p>
         </div>
-        <div className="flex justify-end w-full gap-4">
-          <Button variant="ghost" className="hidden md:inline">
-            Book a demo
-          </Button>
+        <div className="flex justify-end w-full gap-4 items-center">
+          <div className="hidden md:flex items-center justify-center">
+            <Button 
+              variant="ghost" 
+              onClick={toggleTheme}
+              size="icon"
+              className="mx-auto"
+            >
+              {theme === "dark" ? (
+                <Sun className="w-4 h-4" />
+              ) : (
+                <Moon className="w-4 h-4" />
+              )}
+            </Button>
+          </div>
           <div className="border-r hidden md:inline"></div>
           <Button variant="outline">Sign in</Button>
           <Button>Get started</Button>
@@ -137,6 +155,20 @@ export const Header1 = () => {
           </Button>
           {isOpen && (
             <div className="absolute top-20 border-t flex flex-col w-full right-0 bg-background shadow-lg py-4 container gap-8">
+              <div className="flex justify-center items-center border-b pb-4">
+                <Button 
+                  variant="ghost"
+                  size="icon"
+                  onClick={toggleTheme}
+                  className="mx-auto"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="w-4 h-4" />
+                  ) : (
+                    <Moon className="w-4 h-4" />
+                  )}
+                </Button>
+              </div>
               {navigationItems.map((item) => (
                 <div key={item.title}>
                   <div className="flex flex-col gap-2">
