@@ -65,7 +65,10 @@ export const CustomPricing = () => {
               </div>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-              <p className="text-2xl text-foreground">Personal Mastery</p>
+              <div className="-mx-6 -mt-4 pt-4 px-6">
+                <div className="text-xs font-medium text-accent/80 mb-2">Most Affordable</div>
+                <p className="text-2xl text-foreground">Personal Mastery</p>
+              </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.personal.annual : plans.personal.monthly}</span>
                 <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
@@ -80,7 +83,10 @@ export const CustomPricing = () => {
               </Button>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-              <p className="text-2xl text-foreground">Strategic Mastery</p>
+              <div className="border-t-2 border-accent/20 -mx-6 -mt-4 pt-4 px-6">
+                <div className="text-xs font-medium text-accent mb-2">Most Popular</div>
+                <p className="text-2xl text-foreground">Strategic Mastery</p>
+              </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.strategic.annual : plans.strategic.monthly}</span>
                 <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
@@ -90,12 +96,15 @@ export const CustomPricing = () => {
                   </Badge>
                 )}
               </p>
-              <Button className="gap-4 mt-8 bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-accent/40">
+              <Button variant="outline" className="gap-4 mt-8 border-accent text-accent hover:bg-accent hover:text-white">
                 Get Started <MoveRight className="w-4 h-4" />
               </Button>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
-              <p className="text-2xl text-foreground">Sales Mastery</p>
+            <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] pt-4 bg-gradient-to-r from-accent/5 to-accent/10 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+              <div className="border-t-2 border-accent -mx-6 -mt-4 pt-4 px-6">
+                <div className="text-xs font-medium text-accent mb-2">Best Value</div>
+                <p className="text-2xl text-foreground">Sales Mastery</p>
+              </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.sales.annual : plans.sales.monthly}</span>
                 <span className="text-sm text-muted-foreground">/ {isAnnual ? 'year' : 'month'}</span>
@@ -105,7 +114,7 @@ export const CustomPricing = () => {
                   </Badge>
                 )}
               </p>
-              <Button variant="outline" className="gap-4 mt-8">
+              <Button className="gap-4 mt-8 bg-gradient-to-r from-accent to-accent/80 hover:from-accent/90 hover:to-accent/70 text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:shadow-accent/40">
                 Get Started <MoveRight className="w-4 h-4" />
               </Button>
             </div>
@@ -113,7 +122,7 @@ export const CustomPricing = () => {
             {/* Coaching Section */}
             <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-                <b className="text-lg text-foreground">Coaching</b>
+                <b className="text-2xl text-foreground">Coaching</b>
               </div>
               <div className="py-4"></div>
               <div className="py-4"></div>
@@ -122,36 +131,28 @@ export const CustomPricing = () => {
             
             {/* Weekly Group Accelerator */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Weekly Group Accelerator</span>
+              <span className="text-lg text-foreground">Weekly Group Accelerator</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* Private Coaching - Annual Only */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">3 Months Private Coaching with Kenrick Cleveland</span>
+              <span className="text-lg text-foreground">3 Months Private Coaching with Kenrick Cleveland</span>
             </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center items-center h-full">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg whitespace-nowrap">Annual Only</Badge>
             </div>
 
             {/* Neuro-Imprinting Tech Section */}
             <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-                <b className="text-lg text-foreground">Neuro-Imprinting Tech</b>
+                <b className="text-2xl text-foreground">Neuro-Imprinting Tech</b>
               </div>
               <div className="py-4"></div>
               <div className="py-4"></div>
@@ -160,50 +161,51 @@ export const CustomPricing = () => {
             
             {/* Inner Influence Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Inner Influence Tech</span>
+              <span className="text-lg text-foreground">Inner Influence Tech</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* Strategic Influence Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Strategic Influence Tech</span>
+              <span className="text-lg text-foreground">Strategic Influence Tech</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-2" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-2" />
             </div>
 
             {/* Deep Integration Tech */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Deep Integration Tech</span>
+              <span className="text-lg text-foreground">Deep Integration Tech</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-2" />
             </div>
 
             {/* Content Section */}
             <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-                <b className="text-lg text-foreground">Content</b>
+                <div className="flex items-center gap-2 whitespace-nowrap">
+                  <b className="text-2xl text-foreground">Content</b>
+                  <span className="text-lg text-muted-foreground">
+                    {isAnnual 
+                      ? "(Instant Access to ALL Lessons Inside Each Course)"
+                      : "(One Lesson Releases Per Week for Each Course)"}
+                  </span>
+                </div>
               </div>
               <div className="py-4"></div>
               <div className="py-4"></div>
@@ -212,141 +214,117 @@ export const CustomPricing = () => {
             
             {/* Content Collections */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Reality Creation Pro</span>
+              <span className="text-lg text-foreground">Reality Creation Pro</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Inner Influence Classics</span>
+              <span className="text-lg text-foreground">Inner Influence Classics</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* Update Conquering Confidence with pill */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Conquering Confidence</span>
+              <span className="text-lg text-foreground">Conquering Confidence</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
 
             {/* Update Renegade Persuaders with pill */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Renegade Persuaders</span>
+              <span className="text-lg text-foreground">Renegade Persuaders</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-xs">Annual Only</Badge>
+              <Badge variant="outline" className="bg-accent/10 text-accent border-0 text-lg">Annual Only</Badge>
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">MaxPersuasion Classics</span>
+              <span className="text-lg text-foreground">MaxPersuasion Classics</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">DreamState Selling System</span>
+              <span className="text-lg text-foreground">DreamState Selling System</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Power Patterns</span>
+              <span className="text-lg text-foreground">Power Patterns</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">FRAMEworks</span>
+              <span className="text-lg text-foreground">FRAMEworks</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">NLP Business Practitioner Certification</span>
+              <span className="text-lg text-foreground">NLP Business Practitioner Certification</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">NLP Business Master Practitioner Certification</span>
+              <span className="text-lg text-foreground">NLP Business Master Practitioner Certification</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             {/* AI Engine Section */}
             <div className="col-span-4 grid grid-cols-4 bg-gradient-to-r from-accent/5 to-accent/10 border-t mt-4">
               <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-                <b className="text-lg text-foreground">AI Engine</b>
+                <b className="text-2xl text-foreground">AI Engine</b>
               </div>
               <div className="py-4"></div>
               <div className="py-4"></div>
@@ -355,160 +333,136 @@ export const CustomPricing = () => {
             
             {/* Base AI Credits */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Base AI Credits</span>
+              <span className="text-lg text-foreground">Base AI Credits</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <p className="text-muted-foreground text-sm font-medium">300</p>
+              <p className="text-lg text-muted-foreground font-medium">300</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <p className="text-muted-foreground text-sm font-medium">2,000</p>
+              <p className="text-lg text-muted-foreground font-medium">2,000</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <p className="text-muted-foreground text-sm font-medium">10,000</p>
+              <p className="text-lg text-muted-foreground font-medium">10,000</p>
             </div>
             
             {/* AI Collections */}
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Personal Mastery AI</span>
+              <span className="text-lg text-foreground">Personal Mastery AI</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Hypnosis AI</span>
+              <span className="text-lg text-foreground">Hypnosis AI</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span className="text-foreground">Ads AI</span>
+              <span className="text-lg text-foreground">Ads AI</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Emails AI</span>
+              <span className="text-lg text-foreground">Emails AI</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Social Posts AI</span>
+              <span className="text-lg text-foreground">Social Posts AI</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Short-Form Video Scripts AI</span>
+              <span className="text-lg text-foreground">Short-Form Video Scripts AI</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Strategic Insight AI</span>
+              <span className="text-lg text-foreground">Strategic Insight AI</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Storytelling AI</span>
+              <span className="text-lg text-foreground">Storytelling AI</span>
+            </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>DreamState Selling AI</span>
+              <span className="text-lg text-foreground">DreamState Selling AI</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Language Mastery AI</span>
+              <span className="text-lg text-foreground">Language Mastery AI</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
 
             <div className="px-3 lg:px-6 col-span-3 lg:col-span-1 py-4">
-              <span>Framing Mastery AI</span>
+              <span className="text-lg text-foreground">Framing Mastery AI</span>
             </div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
+            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center"></div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Minus className="w-4 h-4 text-muted-foreground" />
-            </div>
-            <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center">
-              <Check className="w-4 h-4 text-accent" />
+              <Check className="w-5 h-5 text-accent stroke-[3]" />
             </div>
           </div>
         </div>
