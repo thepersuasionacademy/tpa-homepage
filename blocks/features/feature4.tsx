@@ -200,13 +200,13 @@ export const Feature4 = () => {
         <div className="flex flex-col items-center justify-center gap-0 pt-12">
           {/* Rotating text */}
           <div className="flex flex-col items-center justify-center w-full max-w-4xl">
-            <Badge className="text-2xl px-6 py-2">For the Curious: Test-Drive the Academy</Badge>
+            <Badge className="text-2xl px-6 py-2">For the Curious: Experience the Difference</Badge>
             <div className="flex gap-2 flex-col pt-6">
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter max-w-[800px] text-center bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                The 7 for $7
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter max-w-[800px] text-center bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent leading-tight pb-2">
+                The 7-Day Fast Start
               </h2>
               <h3 className="text-2xl md:text-4xl tracking-tighter text-center font-regular pt-4">
-                <span className="text-spektr-cyan-50">The 7-day Test-Drive gives you</span>
+                <span className="text-spektr-cyan-50">Your Academy Fast-Start gives you</span>
                 <span className="relative flex w-full justify-center overflow-hidden text-center md:pt-2 min-h-[120px]">
                   &nbsp;
                   {titles.map((title, index) => (
@@ -246,11 +246,40 @@ export const Feature4 = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
             </div>
-            <Button size="lg" className="gap-4 text-2xl px-8 py-8 w-full max-w-md bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white shadow-lg shadow-blue-400/25 transition-all duration-300 hover:shadow-blue-400/40">
-              Test-Drive for Just $7 Today <MoveRight className="w-6 h-6" />
+            <div className="w-full flex flex-col items-center">
+              <h4 className="text-2xl font-semibold text-center mb-6 pb-2 border-b-2 border-blue-500">Here&apos;s What You Get:</h4>
+              <ul className="list-none space-y-4 text-lg mb-8 max-w-2xl w-full">
+                <li className="flex items-center gap-3">
+                  <MoveRight className="h-4 w-4 text-blue-500" />
+                  <span className="text-foreground/90">Your Personal Academy Profile</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <MoveRight className="h-4 w-4 text-blue-500" />
+                  <span className="text-foreground/90">7-Day Path to Mastery Content Series</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <MoveRight className="h-4 w-4 text-blue-500" />
+                  <span className="text-foreground/90">NIS Personal Success Collection</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <MoveRight className="h-4 w-4 text-blue-500" />
+                  <span className="text-foreground/90">5 Fast-Start Precision AI Tools</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <MoveRight className="h-4 w-4 text-blue-500" />
+                  <span className="text-foreground/90">AI Codex Access</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <MoveRight className="h-4 w-4 text-blue-500" />
+                  <span className="text-foreground/90">30 AI Credits</span>
+                </li>
+              </ul>
+            </div>
+            <Button size="lg" className="gap-4 text-2xl px-8 py-8 w-full bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white shadow-lg shadow-blue-400/25 transition-all duration-300 hover:shadow-blue-400/40">
+              Get the 7-Day Fast-Start For Just $7 <MoveRight className="w-6 h-6" />
             </Button>
             <div className="flex flex-col items-center gap-1 -mt-4">
-              <p className="text-base text-muted-foreground">Then $20 in 7 days. $27 monthly thereafter</p>
+              <p className="text-base text-muted-foreground">No Hidden Costs. Just $7 One-Time To Fast-Track Your Success.</p>
             </div>
           </div>
         </div>
