@@ -35,19 +35,19 @@ export const CustomPricing = () => {
 
   const plans = {
     personal: {
-      monthly: 29,
-      annual: 299,
-      savings: Math.round((29 * 12 - 299) / (29 * 12) * 100)
+      monthly: 27,
+      annual: 249,
+      savings: Math.round((27 * 12 - 249) / (27 * 12) * 100)
     },
     strategic: {
-      monthly: 99,
-      annual: 499,
-      savings: Math.round((99 * 12 - 499) / (99 * 12) * 100)
+      monthly: 97,
+      annual: 497,
+      savings: Math.round((97 * 12 - 497) / (97 * 12) * 100)
     },
     sales: {
-      monthly: 299,
-      annual: 2999,
-      savings: Math.round((299 * 12 - 2999) / (299 * 12) * 100)
+      monthly: 297,
+      annual: 2997,
+      savings: Math.round((297 * 12 - 2997) / (297 * 12) * 100)
     }
   };
 
@@ -206,8 +206,8 @@ export const CustomPricing = () => {
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] bg-background border-b border-border">
               <div className="border-t-2 border-accent/20 -mx-6 -mt-4 pt-4 px-6">
-                <div className="text-xs font-medium text-accent/80 mb-2">Most Affordable</div>
-                <p className="text-2xl text-foreground">Personal Mastery</p>
+                <div className="text-xs font-medium text-accent/80 mb-2">Personal Development</div>
+                <p className="text-2xl text-foreground">Master of Self</p>
               </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.personal.annual : plans.personal.monthly}</span>
@@ -224,8 +224,8 @@ export const CustomPricing = () => {
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] bg-background border-b border-r border-border">
               <div className="border-t-2 border-accent/20 -mx-6 -mt-4 pt-4 px-6">
-                <div className="text-xs font-medium text-accent mb-2">Most Popular</div>
-                <p className="text-2xl text-foreground">Strategic Mastery</p>
+                <div className="text-xs font-medium text-accent mb-2">Boost Career Skills</div>
+                <p className="text-2xl text-foreground">Master of Strategy</p>
               </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.strategic.annual : plans.strategic.monthly}</span>
@@ -242,8 +242,8 @@ export const CustomPricing = () => {
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 gap-2 flex flex-col sticky top-[80px] bg-background border-b border-r border-border">
               <div className="border-t-2 border-accent -mx-6 -mt-4 pt-4 px-6">
-                <div className="text-xs font-medium text-accent mb-2">Best Value</div>
-                <p className="text-2xl text-foreground">Sales Mastery</p>
+                <div className="text-xs font-medium text-accent mb-2">Coaching Included</div>
+                <p className="text-2xl text-foreground">Master of Sales</p>
               </div>
               <p className="flex flex-col lg:flex-row lg:items-center gap-2 text-xl mt-4">
                 <span className="text-4xl text-foreground">${isAnnual ? plans.sales.annual : plans.sales.monthly}</span>
@@ -551,13 +551,13 @@ export const CustomPricing = () => {
               <span className="text-lg text-foreground">Base AI Credits</span>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
-              <p className="text-lg text-muted-foreground font-medium">300</p>
+              <p className="text-lg text-muted-foreground font-medium">200</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-r border-border">
-              <p className="text-lg text-muted-foreground font-medium">2,000</p>
+              <p className="text-lg text-muted-foreground font-medium">1,000</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center border-t border-border">
-              <p className="text-lg text-muted-foreground font-medium">10,000</p>
+              <p className="text-lg text-muted-foreground font-medium">5,000</p>
             </div>
             
             {/* AI Collections */}

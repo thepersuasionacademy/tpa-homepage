@@ -11,25 +11,25 @@ export const MobilePricing = () => {
 
   const plans = {
     personal: {
-      title: "Personal Mastery",
-      description: "Most Affordable",
-      monthly: 29,
-      annual: 299,
-      savings: Math.round((29 * 12 - 299) / (29 * 12) * 100)
+      title: "Master of Self",
+      description: "Personal Development",
+      monthly: 27,
+      annual: 249,
+      savings: Math.round((27 * 12 - 249) / (27 * 12) * 100)
     },
     strategic: {
-      title: "Strategic Mastery",
-      description: "Most Popular",
-      monthly: 99,
-      annual: 499,
-      savings: Math.round((99 * 12 - 499) / (99 * 12) * 100)
+      title: "Master of Strategy",
+      description: "Boost Career Skills",
+      monthly: 97,
+      annual: 497,
+      savings: Math.round((97 * 12 - 497) / (97 * 12) * 100)
     },
     sales: {
-      title: "Sales Mastery",
-      description: "Best Value",
-      monthly: 299,
-      annual: 2999,
-      savings: Math.round((299 * 12 - 2999) / (299 * 12) * 100)
+      title: "Master of Sales",
+      description: "Coaching Included",
+      monthly: 297,
+      annual: 2997,
+      savings: Math.round((297 * 12 - 2997) / (297 * 12) * 100)
     }
   };
 
@@ -299,13 +299,13 @@ export const MobilePricing = () => {
               Base AI Credits
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center items-center border-t border-r border-border">
-              <p className="text-sm text-muted-foreground">300</p>
+              <p className="text-sm text-muted-foreground">200</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center items-center border-t border-r border-border">
-              <p className="text-sm text-muted-foreground">2,000</p>
+              <p className="text-sm text-muted-foreground">1,000</p>
             </div>
             <div className="px-3 py-1 md:px-6 md:py-4 flex justify-center items-center border-t border-border">
-              <p className="text-sm text-muted-foreground">10,000</p>
+              <p className="text-sm text-muted-foreground">5,000</p>
             </div>
             
             {featureCategories.aiEngine.map((feature) => (

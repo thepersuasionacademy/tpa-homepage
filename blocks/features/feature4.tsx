@@ -29,6 +29,24 @@ export const Feature4 = () => {
     []
   );
 
+  const plans = {
+    personal: {
+      monthly: 27,
+      annual: 297,
+      savings: Math.round((27 * 12 - 297) / (27 * 12) * 100)
+    },
+    strategic: {
+      monthly: 97,
+      annual: 499,
+      savings: Math.round((97 * 12 - 499) / (97 * 12) * 100)
+    },
+    sales: {
+      monthly: 297,
+      annual: 2999,
+      savings: Math.round((297 * 12 - 2999) / (297 * 12) * 100)
+    }
+  };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (titleNumber === titles.length - 1) {
@@ -71,13 +89,24 @@ export const Feature4 = () => {
                     <div className="h-10 w-10 rounded-lg bg-accent/20 flex items-center justify-center">
                       <span className="text-lg font-bold text-accent">01</span>
                     </div>
-                    <h3 className="text-2xl font-semibold text-left">Neuro-Imprinting Technology</h3>
+                    <h3 className="text-2xl font-semibold text-left">On-Demand Streaming</h3>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="bg-accent/5 px-6 py-4 rounded-b-xl text-left">
-                  <p className="text-lg text-muted-foreground mx-14 text-left">
-                    Ericksoninian-inspired hypnosis session + cutting-edge brainwave encoding technology = breakthrough deep learning and emotional state mastery
-                  </p>
+                  <div className="mx-14">
+                    <h4 className="text-xl font-medium mb-4">Leverage Kenrick Cleveland&apos;s 45+ Year Catalogue of Persuasion Training</h4>
+                    <div className="space-y-4 text-lg text-muted-foreground">
+                      <p>
+                        Known to top business advisors as &quot;The World&apos;s Greatest Persuader&quot; and others as his secret weapon for their success… Kenrick has pioneered the field of business persuasion since the 1980s. His early work still remains the gold standard of getting others to &apos;Yes&apos; quickly, predictably, and ethically.
+                      </p>
+                      <p>
+                        No one on this Earth has produced as much groundbreaking work as Kenrick Cleveland. And The Persuasion Academy is honored to leverage his life&apos;s work into this deep-learning ecosystem so that anyone at any skill level can learn and master Kenrick&apos;s life changing insights.
+                      </p>
+                      <p>
+                        Depending on your Mastery Path Membership Level, you get access to a wide range of these works on-demand.
+                      </p>
+                    </div>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
 
@@ -87,29 +116,80 @@ export const Feature4 = () => {
                     <div className="h-10 w-10 rounded-lg bg-accent/20 flex items-center justify-center">
                       <span className="text-lg font-bold text-accent">02</span>
                     </div>
-                    <h3 className="text-2xl font-semibold text-left">World-Leading Persuasion Frameworks</h3>
+                    <h3 className="text-2xl font-semibold text-left">Neuro-Imprinting Sessions (NIS)</h3>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="bg-accent/5 px-6 py-4 rounded-b-xl text-left">
-                  <p className="text-lg text-muted-foreground mx-14 text-left">
-                    Cut the theory and overly technical nonsense... let&apos;s apply modern psychology with masterful language and strategic insights you won&apos;t find anywhere else.
-                  </p>
+                  <div className="mx-14">
+                    <h4 className="text-xl font-medium mb-4">Deeply Learn and Integrate Persuasion Principles With Brain-Boosting Technology</h4>
+                    <div className="space-y-4 text-lg text-muted-foreground">
+                      <p>
+                        In 1985, Kenrick Cleveland accidentally invented a new brain-boosting technology. Through his personal study with Carol Erickson — daughter of Milton Erickson, considered the pioneer of hypnotherapy — Kenrick learned the methods and techniques of breakthrough mental change through hypnosis sessions.
+                      </p>
+                      <p>
+                        While these were the first of their time, they were even more advanced than the kind you see on the market all these years later. That&apos;s because Kenrick blended his mastery of Ericksonian language for change…. with special brainwave encoding technology that helps listeners activate a deep learning state in minutes.
+                      </p>
+                      <p>
+                        Through the years, Kenrick has perfected the production of these Neuro-Imprinting Sessions. Today, they are close to cinematic experiences that place you in the brain state you need to deeply learn strategies for persuasion applied to yourself and others.
+                      </p>
+                      <p>
+                        This technology is also incredibly helpful for emotional state management such as sleep enhancement, stress reduction, and mood boosting. These NIS are included in various programs included in The Persuasion Academy Mastery Paths. They are a core element of deeply learning and applying these life-changing strategies of persuasion.
+                      </p>
+                    </div>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-3" className="border-none">
+              <AccordionItem value="item-3" className="border-none mb-4">
                 <AccordionTrigger className="hover:no-underline bg-accent/5 hover:bg-accent/10 px-6 py-4 rounded-xl transition-all data-[state=open]:rounded-b-none data-[state=open]:bg-accent/10">
                   <div className="flex items-center gap-4">
                     <div className="h-10 w-10 rounded-lg bg-accent/20 flex items-center justify-center">
                       <span className="text-lg font-bold text-accent">03</span>
                     </div>
-                    <h3 className="text-2xl font-semibold text-left">Custom-Built AI Engine</h3>
+                    <h3 className="text-2xl font-semibold text-left">AI Codex</h3>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="bg-accent/5 px-6 py-4 rounded-b-xl text-left">
-                  <p className="text-lg text-muted-foreground mx-14 text-left">
-                    It&apos;s okay to laugh at all the other gurus throwing ChatGPT prompts at you... they&apos;re trying to keep up. Here, you have a complete engine, filled with countless AI tools with all the complex prompting pre-built... so all you have to do is put in simple inputs... and receive breath-taking responses.
-                  </p>
+                  <div className="mx-14">
+                    <h4 className="text-xl font-medium mb-4">Chat with &quot;The Great Library of Persuasion&quot; Seamlessly</h4>
+                    <div className="space-y-4 text-lg text-muted-foreground">
+                      <p>
+                        Indexed with every single framework Kenrick has ever taught…. Every seminar, training, and course made in the past, or continues to make… thousands and thousands of hours of breakthrough insights….
+                      </p>
+                      <p>
+                        Think of The Persuasion Academy AI Codex as the closest thing to a Large Language Model for Persuasion. Any question you have can be answered with crystal clarity, pulling directly from the most relevant persuasion frameworks throughout Kenrick Cleveland&apos;s career.
+                      </p>
+                      <p>
+                        This adds an unrivaled level of personalization in your own journey to mastering persuasive communication, no matter your aim or skill level. One curious question can lead to a deep understanding of the psychology behind what works, and how to put these frameworks into real language.
+                      </p>
+                    </div>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="item-4" className="border-none">
+                <AccordionTrigger className="hover:no-underline bg-accent/5 hover:bg-accent/10 px-6 py-4 rounded-xl transition-all data-[state=open]:rounded-b-none data-[state=open]:bg-accent/10">
+                  <div className="flex items-center gap-4">
+                    <div className="h-10 w-10 rounded-lg bg-accent/20 flex items-center justify-center">
+                      <span className="text-lg font-bold text-accent">04</span>
+                    </div>
+                    <h3 className="text-2xl font-semibold text-left">Advanced AI Tool Engine</h3>
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="bg-accent/5 px-6 py-4 rounded-b-xl text-left">
+                  <div className="mx-14">
+                    <div className="space-y-4 text-lg text-muted-foreground">
+                      <p>
+                        The Precision AI Tool Engine is designed for highly specialized use cases. With these tools, you just put in a few easy inputs and let the advanced AI tools use our highly engineered backend prompting to do the heavy work.
+                      </p>
+                      <p>
+                        Each tool is finely tuned and organized for the use cases you most need. Forget all the other &quot;gurus&quot; giving you a document with the prompts, making you do all the hard work…
+                      </p>
+                      <p>
+                        Now, all you need to know is the simple input you want for each tool, press Generate, and watch the most advanced persuasion frameworks integrate with AI to create outputs that rival the most expert persuaders out there.
+                      </p>
+                    </div>
+                  </div>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -123,10 +203,10 @@ export const Feature4 = () => {
             <Badge className="text-2xl px-6 py-2">For the Curious: Test-Drive the Academy</Badge>
             <div className="flex gap-2 flex-col pt-6">
               <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter max-w-[800px] text-center bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-                Taste the Future
+                The 7 for $7
               </h2>
               <h3 className="text-2xl md:text-4xl tracking-tighter text-center font-regular pt-4">
-                <span className="text-spektr-cyan-50">Creating a free account gives you</span>
+                <span className="text-spektr-cyan-50">The 7-day Test-Drive gives you</span>
                 <span className="relative flex w-full justify-center overflow-hidden text-center md:pt-2 min-h-[120px]">
                   &nbsp;
                   {titles.map((title, index) => (
@@ -167,11 +247,10 @@ export const Feature4 = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-background/20 to-transparent" />
             </div>
             <Button size="lg" className="gap-4 text-2xl px-8 py-8 w-full max-w-md bg-gradient-to-r from-blue-400 to-blue-600 hover:from-blue-500 hover:to-blue-700 text-white shadow-lg shadow-blue-400/25 transition-all duration-300 hover:shadow-blue-400/40">
-              Create Your Free Account <MoveRight className="w-6 h-6" />
+              Test-Drive for Just $7 Today <MoveRight className="w-6 h-6" />
             </Button>
             <div className="flex flex-col items-center gap-1 -mt-4">
-              <p className="text-sm text-muted-foreground">No Credit Card Required</p>
-              <p className="text-sm text-muted-foreground">No Tech Support Given</p>
+              <p className="text-base text-muted-foreground">Then $20 in 7 days. $27 monthly thereafter</p>
             </div>
           </div>
         </div>
